@@ -1,4 +1,4 @@
-module github.com/creatorninja/go-generics
+module github.com/CreatorNinja/go-generics
 
 go 1.18
 
