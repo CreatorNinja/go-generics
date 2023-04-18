@@ -1,10 +1,9 @@
-module github.com/CreatorNinja/go-generics
+module github.com/CreatorNinja/go-generics/pkg/gcloud
 
 go 1.18
 
 require (
 	cloud.google.com/go/storage v1.30.1
-	github.com/lib/pq v1.10.8
 	google.golang.org/api v0.118.0
 )
 
