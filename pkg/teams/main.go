@@ -51,7 +51,7 @@ func MarshalledJSONNotification(message string) ([]byte, error) {
 		Schema:  "http://adaptivecards.io/schemas/adaptive-card.json",
 		Type:    "AdaptiveCard",
 		Version: "1.2",
-		Body:    append(make([]ContentBody, 1), contentBody),
+		Body:    []ContentBody{contentBody},
 	}
 
 	attachment := Attachment{
@@ -61,14 +61,14 @@ func MarshalledJSONNotification(message string) ([]byte, error) {
 
 	notification := Notification{
 		Type:        "message",
-		Attachments: append(make([]Attachment, 1), attachment),
+		Attachments: []Attachment{attachment},
 	}
 
 	return json.Marshal(notification)
 }
 
 // NotifyTeams sends notification to teams channel created on the constructor
-func (n *TeamsNotifier) NotifyTeams(message string) error {
+func (n *TeamsNotifier) Notify(message string) error {
 	if n.Enable {
 		jsonValue, _ := MarshalledJSONNotification(message)
 
