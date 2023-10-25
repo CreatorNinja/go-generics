@@ -8,8 +8,20 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/storage/azblob"
 )
 
+var AzClient *azblob.Client
+
 type Client struct {
 	client *azblob.Client
+}
+
+func InitializeClient(url string) error {
+	credential, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		return err
+	}
+
+	AzClient, err = azblob.NewClient(url, credential, nil)
+	return err
 }
 
 func NewClient(url string) (*Client, error) {
